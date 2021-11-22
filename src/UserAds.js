@@ -133,12 +133,34 @@ ad_ads:1,
 
                   dataField: 'title',  
 
-                  text: 'Title' ,
+                  text: 'Ad Title' ,
                   
                   
                    sort: true
 
                 }, 
+                  {  
+
+                  dataField: 'user_name',  
+
+                  text: 'User Name' ,
+                  
+                  
+                   sort: true
+
+                }, 
+
+                 {  
+
+                  dataField: 'contact',  
+
+                  text: 'Contact' ,
+                  
+                  
+                   sort: true
+
+                }, 
+
                  {  
 
                   dataField: 'weight',  
@@ -169,6 +191,16 @@ ad_ads:1,
                         sort: true  
 
                       },
+                       {  
+
+                        dataField: 'country',  
+
+                        text: 'Country',  
+
+                        sort: true  
+
+                      },
+
 
                       //  {  
 
@@ -416,6 +448,20 @@ headers:{ 'Content-Type': 'application/json' } })
             Items:newArray
         })
     }
+
+     onChangeHandlernumber(e) {
+        console.log(e.target.value);
+        let newArray = this.apiUsers.filter((d)=>{
+          console.log(d)
+            let searchValue = d.contact.toLowerCase();
+            return searchValue.indexOf(e.target.value) !== -1;
+        });
+        console.log(newArray)
+        this.setState({
+            Items:newArray
+        })
+    }
+
  getItems = async () =>
     {
         this.setState({loading:false ,});
@@ -580,7 +626,13 @@ headers:{ 'Content-Type': 'application/json' } })
       </Modal>
              </div>
             <div class="card-body">
-         <Input type="text"  value={this.state.value}  placeholder="Search for Title"  onChange={this.onChangeHandler.bind(this)} style = {{float:'right' , width:'20%' , marginBottom:5 ,borderColor: 'gray', borderWidth: 1, color : "#15238C"}} />
+              <Input type="text"  value={this.state.value} 
+               placeholder="Search for User Contact"  onChange={this.onChangeHandlernumber.bind(this)}
+                style = {{float:'right' , width:'20%' , marginBottom:5 ,borderColor: 'gray', borderWidth: 1, color : "#15238C"}} />
+       
+
+         <Input type="text"  value={this.state.value} 
+          placeholder="Search for Title"  onChange={this.onChangeHandler.bind(this)} style = {{marginRight:15,float:'right' , width:'20%' , marginBottom:5 ,borderColor: 'gray', borderWidth: 1, color : "#15238C"}} />
                             <BootstrapTable   
                         style = {{background:'#f2a51a'}}  
 bootstrap4
