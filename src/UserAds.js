@@ -408,7 +408,7 @@ headers:{ 'Content-Type': 'application/json' } })
         console.log(e.target.value);
         let newArray = this.apiUsers.filter((d)=>{
           console.log(d)
-            let searchValue = d.email.toLowerCase();
+            let searchValue = d.title.toLowerCase();
             return searchValue.indexOf(e.target.value) !== -1;
         });
         console.log(newArray)
@@ -430,7 +430,8 @@ headers:{ 'Content-Type': 'application/json' } })
     }).then(({ data}) =>
     data);
     console.log(data.data)
-    this.setState({Items: data.data ,  loading:true ,})
+     this.apiUsers =  data.data;
+    this.setState({Items: data.data ,  loading:true })
     }catch(err)
     {
       console.log(err)
@@ -579,7 +580,7 @@ headers:{ 'Content-Type': 'application/json' } })
       </Modal>
              </div>
             <div class="card-body">
-         <Input type="text"  value={this.state.value}  placeholder="Search for..."  onChange={this.onChangeHandler.bind(this)} style = {{float:'right' , width:'20%' , marginBottom:5 ,borderColor: 'gray', borderWidth: 1, color : "#15238C"}} />
+         <Input type="text"  value={this.state.value}  placeholder="Search for Title"  onChange={this.onChangeHandler.bind(this)} style = {{float:'right' , width:'20%' , marginBottom:5 ,borderColor: 'gray', borderWidth: 1, color : "#15238C"}} />
                             <BootstrapTable   
                         style = {{background:'#f2a51a'}}  
 bootstrap4
